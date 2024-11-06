@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人主页</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .button-container input[id="chat"] {
+            width: auto;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>个人主页</h2>
+    <div class="button-container">
+        <input type="button" id="chat" value="进入聊天室" onclick="window.location.href='/chat';">
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+    <!-- 引用外部的样式文件 -->
+    <link rel="stylesheet" href="static/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .button-container input[type="submit"],
+        .button-container input[type="button"] {
+            width: 48%;
+        }
+    </style>
+    <script>
+        function handleFormSubmit(event) {
+            event.preventDefault()
+
+            var form = document.getElementById("registerForm")
+            var formData = new FormData(form)
+
+            fetch('/register', {
+                method: 'POST',
+                body: formData
+            }).then(response => response.json()).then(data => {
+                if (data.success) {
+                    window.location.href = '/login';  // 注册成功后跳转到登录页面
+                } else {
+                    $('#error-message').text(data.message);
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+                $('#error-message').text("发生错误，请稍后再试。");
+            })
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <h2>注册</h2>
+    <form id="registerForm" onsubmit="handleFormSubmit(event)">
+        <input type="text" name="username" placeholder="用户名" required>
+        <input type="password" name="password" placeholder="密码" required>
+        <input type="password" name="confirm_password" placeholder="确认密码" required>
+        <div class="error-message" id="error-message"></div>
+        <div class="button-container">
+            <input type="submit" value="注册">
+            <input type="button" value="返回登录" onclick="window.location.href='/login';">
+        </div>
+    </form>
+</div>
+</body>
+</html>

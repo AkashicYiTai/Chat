@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <!-- 引用外部的样式文件 -->
+    <link rel="stylesheet" href="static/css/style.css">
+    <style>
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .button-container input[type="submit"],
+        .button-container input[type="button"] {
+            width: 48%;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>登录</h2>
+    <form id="login-form">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}">
+        <input type="text" name="username" placeholder="用户名" required>
+        <input type="password" name="password" placeholder="密码" required>
+        <div class="error-message" id="error-message"></div>
+        <div class="button-container">
+            <input type="submit" value="登录">
+            <input type="button" value="注册" onclick="window.location.href='/register';">
+        </div>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#login-form').on('submit', function (event) {
+            event.preventDefault(); // 阻止表单默认提交行为
+            $.ajax({
+                url: '/login',
+                method: 'POST',
+                data: $(this).serialize(), // 将表单数据序列化
+                success: function (response) {
+                    const data = JSON.parse(response);
+                    if (data.success) {
+                        // 登录成功，跳转到个人主页
+
+                        window.location.href = data.redirect;
+                    } else {
+                        // 显示错误消息
+                        $('#error-message').text(data.message);
+                    }
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

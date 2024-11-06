@@ -1,0 +1,4 @@
+tornado==6.3
+tornado-sqlalchemy==0.6.0
+sqlalchemy==1.4
+werkzeug==2.0

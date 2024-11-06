@@ -1,0 +1,56 @@
+/* 设置全局样式 */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('../images/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.8); /* 半透明白色背景 */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 4 / 3; /* 设定宽高比为 4:3 */
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+
+/* 媒体查询: 移动端样式 */
+@media (max-width: 600px), (max-height: 800px) {
+    .container {
+        width: 80vw; /* 设置宽度为视口宽度的 80% */
+        padding: 1.5rem; /* 调整内边距以适应小屏幕 */
+    }
+}
