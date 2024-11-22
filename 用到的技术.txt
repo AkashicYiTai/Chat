@@ -1,0 +1,4 @@
+1.项目文结构分为handlers、models、static、template等，结构清晰易于管理。
+2.手机端和网页端适配，都能清晰显示。
+3.使用tornado异步框架，与sqlalchemy结合，在查询过程中不阻塞程序。（async、await、sqlalchemy.future的select方法（select 方法可以将一个标准的 SQLAlchemy 查询转换为一个 Future 对象，使其能够在异步函数中使用 await 进行等待。））
+4.使用CSRF令牌来防止CSRF攻击。
